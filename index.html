@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bubble Chart</title>
+</head>
+<body>
+  <h1>Bubbles</h1>
+  <div id="chart"><svg width="100" height="100"></svg></div>
+
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="//d3js.org/d3-scale-chromatic.v0.3.min.js"></script>
+  <script src="bubble.js"></script>
+  <script>
+    d3.csv('dreamhub.csv', function(error, data) {
+      if (error) {
+        console.log('error while parsing data');
+        throw error;
+      }
+      console.log(data)
+
+      var chart = bubbleChart().width(1000).height(800);
+      d3.select('#chart').data(data).call(chart);
+    });
+</script>
+</body>
+</html>
+
